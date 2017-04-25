@@ -9,8 +9,9 @@
 
 % Place the sensor channels to use in this vector. Add further channels to
 % this vector if more sensors are required
-sensorsToTrack = [1];
-
+sensorsToTrack = [2];
+% Aquisition refresh rate in Hertz
+refershRate = 30;
 % The DAQ being used. nidaq621X refers to either the NI-USB 6212 or NI-USB
 % 6216 acquisition systems.
 DAQType = 'nidaq621X';
@@ -33,7 +34,7 @@ while (~FS.Stop())
    sys = fGetSensorPosition(sys, sensorsToTrack(1));
    % Copy the position to a local variable and print to screen
    position = sys.positionVector;
-   disp(positionVector);
+   disp(position);
    
    % Call again for a different sensor, where X is the number of the
    % sensor channel. This will overwrite the previous stored position in
@@ -41,6 +42,6 @@ while (~FS.Stop())
    % sys = fGetSensorPosition(sys, sensorsToTrack(X));
    
    % Required 1ms delay for DAQ
-   pause(0.001);
+   pause(1/refreshRate);
    clc
 end

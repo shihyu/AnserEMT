@@ -12,7 +12,8 @@
 % Settings for the tracking system
 % List of sensors to initialise.
 sensorsToTrack = [1,2];
-refreshRate = 100;
+% Aquisition refresh rate in Hertz
+refreshRate = 30;
 
 % Enable flag for OpenIGTLink connection
 igtEnable = 1;
@@ -36,7 +37,6 @@ end
 % This loop is cancelled cleanly using the 3rd party stoploop function.
 FS = stoploop();
 while (~FS.Stop())
-   tic
    
    % Update the tracking system with new sample data from the DAQ.
    % Calculate the position of a specific sensor in sensorsToTrack.
@@ -45,7 +45,7 @@ while (~FS.Stop())
    % Print the position vector on the command line. The format of the
    % vector is [x,y,z,theta,phi]
    sys = fSysDAQUpdate(sys);
-   sys = fGetSensorPosition(sys, 2);
+   sys = fGetSensorPosition(sys, sensorsToTrack(2));
    disp(sys.positionVector);
    
    % Prepare to transmit sensor position over network.
@@ -69,10 +69,10 @@ while (~FS.Stop())
 
    end
 
-   toc
+   
    % This pause is required to allow the DAQ background DMA to work.
    % Otherwise transfer might freeze and data does not update
-   pause(0.001);
+   pause(1/refreshRate);
    clc;
 end
 
