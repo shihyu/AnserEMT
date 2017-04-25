@@ -19,9 +19,8 @@ igtEnable = 1;
 transformName = 'ProbeToTracker';
 
 
-% Initialise the tracking system. Channel 0 is always required.
-% Desired channels are passed in a single vector. For only one sensor the
-% vector [0, X] is passed, where X is the index of the desired sensor.
+% Initialise the tracking system with two sensor channels [1,2] using the
+% National Instruments NI USB 6212DAQ
 sys = fSysSetup(sensorsToTrack, 'nidaq621X');
 pause(0.5);
 
@@ -72,6 +71,7 @@ while (~FS.Stop())
 
    toc
    % This pause is required to allow the DAQ background DMA to work.
+   % Otherwise transfer might freeze and data does not update
    pause(0.001);
    clc;
 end
@@ -80,6 +80,7 @@ end
 %% Save and cleanup
 FS.Clear(); 
 clear FS;
+% Cleanly disconnect from the OpenIGTLink server
 if(igtEnable == 1)
     igtlDisconnect(slicerConnection);
 end
