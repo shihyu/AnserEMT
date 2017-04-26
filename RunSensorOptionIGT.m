@@ -13,7 +13,7 @@
 % List of sensors to initialise.
 sensorsToTrack = [1,2];
 % Aquisition refresh rate in Hertz
-refreshRate = 30;
+refreshRate = 40;
 
 % Enable flag for OpenIGTLink connection
 igtEnable = 1;
