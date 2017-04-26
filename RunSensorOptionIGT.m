@@ -54,8 +54,6 @@ while (~FS.Stop())
       % Rigid registration matrix.  
       sys.registration = eye(4,4);    
    
-      % Add pi to theta angle. This resolved pointing issues.
-      sys.positionVector(4) = sys.positionVector(4) + pi;
       % Convert meters to millimeters. Required for many IGT packages
       sys.positionVector(1:3) = sys.positionVector(1:3) * 1000;
       % Convert from Spherical to Homogenous transformation matrix.
@@ -73,7 +71,6 @@ while (~FS.Stop())
    % This pause is required to allow the DAQ background DMA to work.
    % Otherwise transfer might freeze and data does not update
    pause(1/refreshRate);
-   clc;
 end
 
 

@@ -25,7 +25,7 @@ for i =1:length(sys.ztestpoint)
     
 
     % Set the initial position for the solver to the analytically predefined testpoint positions. Theta and Phi are initialised to zero, as the sensor is placed axially in the test block.
-    x0 = [sys.xtestpoint(i),sys.ytestpoint(i), sys.ztestpoint(i), 0, 0];
+    x0 = [sys.xtestpoint(i),sys.ytestpoint(i), sys.ztestpoint(i), pi, 0];
     % Extract the field strength values sensed at a particular testpoint
     fluxReal = sys.BStoreActive(:,i);
 	        

@@ -11,7 +11,7 @@
 % this vector if more sensors are required
 sensorsToTrack = [2];
 % Aquisition refresh rate in Hertz
-refershRate = 40;
+refreshRate = 40;
 % The DAQ being used. nidaq621X refers to either the NI-USB 6212 or NI-USB
 % 6216 acquisition systems.
 DAQType = 'nidaq621X';
@@ -24,7 +24,6 @@ pause(0.5);
 
 FS = stoploop();
 while (~FS.Stop())
-   tic
    % Retrieve the latest information from the DAQ. This call retrieves data
    % from all sensors simultaneously and should be called ONLY ONCE per
    % acquisition iteration.
@@ -43,8 +42,5 @@ while (~FS.Stop())
    % sys = fGetSensorPosition(sys, sensorsToTrack(X));
    
    % Required 1ms delay for DAQ
-   toc
    pause(1/refreshRate);
-   pause(0.001);
-   %clc
 end

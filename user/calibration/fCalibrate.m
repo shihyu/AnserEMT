@@ -8,6 +8,10 @@ function sys = fCalibrate(sys)
 
 % The number of emitter coils in the system
 numCoils = 8;
+% Angle of orientation of the sensor during calibration. In spherical
+% coordinates this corresponds to pi radians, since the sensor is facing
+% down towards the tracking board. 
+sensorZorientation = pi;
 
 % Load the magnetic field strengths sensed by the tracking coil at each testpoint.
 loader = load(strcat('data/BStore', num2str(sys.SensorNo)));
@@ -51,6 +55,8 @@ sys.zOffsetActive = mean(zOffsetAllCoils);
 
 % Save calibration values to file CalibrationX.mat where X is the selected sensor.
 zOffset = sys.zOffsetActive
+
+sys.BScaleActive = sys.BScaleActive * sign(cos(sensorZorientation));
 BScale = sys.BScaleActive
 save(strcat('data/Calibration', num2str(sys.SensorNo)), 'zOffset', 'BScale');
 
