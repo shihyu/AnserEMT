@@ -28,7 +28,7 @@ while (~FS.Stop())
     % 1st column is the current reference signal for the transmitter coils.
     % This reference current signal can be viewed in the FFT by selecting
     % the first column of sessionData
-    ft = fft(sessionData(:, 1));
+    ft = fft(sessionData(:, 2));
     plot((1:(length(ft)/2))./2500, 20*log10(abs(ft(1:(length(ft)/2)))/length(ft)));
     
     % Scale the axes of the plots to the desired range.

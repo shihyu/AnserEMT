@@ -269,7 +269,6 @@ else
     end   
 end
 
-fSysSave(sys);
 fprintf('PASS: System initialised with sensors: %s \n', sprintf('%d ', sys.Sensors));
 
 end

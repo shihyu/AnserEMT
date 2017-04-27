@@ -9,7 +9,7 @@
 
 % Place the sensor channels to use in this vector. Add further channels to
 % this vector if more sensors are required
-sensorsToTrack = [2];
+sensorsToTrack = [1,2];
 % Aquisition refresh rate in Hertz
 refreshRate = 40;
 % The DAQ being used. nidaq621X refers to either the NI-USB 6212 or NI-USB
