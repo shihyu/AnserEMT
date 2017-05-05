@@ -15,7 +15,7 @@
 % OUTPUT:   
 %       sys         - A structure containing the system settings (dimensions,
 %                    constants, frequencies etc
-function sys = fSysSetup(sensorsToTrack, DAQType)
+function sys = fSysSetup(sensorsToTrack, DAQType, sampleSize)
 
 % Adds adjacent directories to the workspace
 addpath(genpath(pwd))
@@ -134,7 +134,7 @@ z_matrix=[z_points1; z_points2; z_points3; z_points4; z_points5; z_points6; z_po
 % Specify the sampling frequency per sensor channel
 Fs = 100e3;
 Ts=1/Fs;
-numSamples = 5000;
+numSamples = sampleSize;
 
 % Specify the number of time samples, must be the same as the length of X
 t=0:Ts:(numSamples - 1) * Ts; 

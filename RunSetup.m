@@ -10,4 +10,5 @@
 % the tracking system, including coil dimensions, calibration data and the
 % DAQ object.
 sensorsToTrack = [1, 2];
-sys = fSysSetup(sensorsToTrack, 'nidaq621X');
+sampleSize = 1000;
+sys = fSysSetup(sensorsToTrack, 'nidaq621X', 1000);

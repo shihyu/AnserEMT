@@ -22,7 +22,8 @@ transformName = 'ProbeToTracker';
 
 % Initialise the tracking system with two sensor channels [1,2] using the
 % National Instruments NI USB 6212DAQ
-sys = fSysSetup(sensorsToTrack, 'nidaq621X');
+sampleSize = 1000;
+sys = fSysSetup(sensorsToTrack, 'nidaq621X', 1000);
 pause(0.5);
 
 

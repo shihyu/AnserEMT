@@ -40,7 +40,7 @@ Phase1 = PhaseY(1,:) - PhaseY(2,:)-sys.DAQPhase;
 % This loop corrects the phase measurement.
 % Sometimes randomly the phase changes by pi radiens due to how the 'Angle' function is implemented this loop ensures consistency.
 % The phase angle should always be between -pi and pi
-for j=1:numCoils;
+for j=1:numCoils
      if abs(Phase1(j))>pi
 
      Phase1(j)=-sign(Phase1(j))*(2*pi-abs(Phase1(j)));

@@ -17,7 +17,8 @@ refreshRate = 40;
 DAQType = 'nidaq621X';
 
 % Call the setup function for the system.
-sys = fSysSetup(sensorsToTrack, DAQType);
+sampleSize = 1000;
+sys = fSysSetup(sensorsToTrack, 'DAQType', 1000);
 
 % Give DAQ some time to start.
 pause(0.5);
