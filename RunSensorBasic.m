@@ -18,10 +18,6 @@ sensorsToTrack = [1,2];
 % Aquisition refresh rate in Hertz
 refreshRate = 40;
 
-% The DAQ being used. nidaq621X refers to either the NI-USB 6212 or NI-USB
-% 6216 acquisition systems.
-DAQType = 'nidaq621Xoem';
-
 % Call the setup function for the system.
 sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);
 

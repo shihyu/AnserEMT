@@ -72,7 +72,6 @@ while (~FS.Stop())
       igtlSendTransform(slicerConnection, transform);
 
    end
-
    
    % This pause is required to allow the DAQ background DMA to work.
    % Otherwise transfer might freeze and data does not update

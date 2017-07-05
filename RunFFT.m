@@ -7,15 +7,14 @@
 % Use this script as a starting point for visually inspecting the field
 % strengths of the tracking system.
 
-
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
 
-
 % Channel the DAQ to inspect. This does NOT directly corresponding to the sensor
 % channelLook at the DAQ pin mapping
 sensorsToTrack = [1,2];
+
 % Refresh rate of the position acquisition (Hz)
 refreshRate = 200;
 
