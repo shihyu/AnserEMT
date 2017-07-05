@@ -7,18 +7,23 @@
 % Use this script as a reference program for writing EMT applications.
 
 
+SYSTEM = 'Anser1';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev2';
+
 % Place the sensor channels to use in this vector. Add further channels to
 % this vector if more sensors are required
 sensorsToTrack = [1,2];
+
 % Aquisition refresh rate in Hertz
 refreshRate = 40;
+
 % The DAQ being used. nidaq621X refers to either the NI-USB 6212 or NI-USB
 % 6216 acquisition systems.
-DAQType = 'nidaq621X';
+DAQType = 'nidaq621Xoem';
 
 % Call the setup function for the system.
-sampleSize = 1000;
-sys = fSysSetup(sensorsToTrack, 'DAQType', 1000);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);
 
 % Give DAQ some time to start.
 pause(0.5);
@@ -31,7 +36,7 @@ while (~FS.Stop())
    sys = fSysDAQUpdate(sys);
    
    % Acquire the position for one sensor, the first in sensorsToTrack
-   sys = fGetSensorPosition(sys, sensorsToTrack(1));
+   sys = fGetSensorPosition(sys, sensorsToTrack(2));
 
    % Copy the position to a local variable and print to screen
    position = sys.positionVector;

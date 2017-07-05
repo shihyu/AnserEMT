@@ -5,10 +5,14 @@
 
 % Use this file as a blank starting point for EMT applications
 
+SYSTEM = 'Anser1';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev2';
+
+
 % Calls the setup function for the tracking system with two sensor channels
 % [1,2] enabled. The returned object contains all the information regarding
 % the tracking system, including coil dimensions, calibration data and the
 % DAQ object.
 sensorsToTrack = [1, 2];
-sampleSize = 1000;
-sys = fSysSetup(sensorsToTrack, 'nidaq621X', 1000);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);

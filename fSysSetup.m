@@ -15,15 +15,15 @@
 % OUTPUT:   
 %       sys         - A structure containing the system settings (dimensions,
 %                    constants, frequencies etc
-function sys = fSysSetup(sensorsToTrack, DAQType, sampleSize)
+function sys = fSysSetup(sensorsToTrack, systemType, DAQType, DAQString)
 
 % Adds adjacent directories to the workspace
 addpath(genpath(pwd))
 fTitle();
 
 
-if (nargin ~= 2)
-    error('fSysSetup takes three arguements');
+if (nargin ~= 4)
+    error('fSysSetup takes four arguements');
 end
 
 
@@ -42,32 +42,9 @@ u0 = 4*pi*1e-7;
 % All test points are with respect to the emitter coils and are used for
 % calibration.
 
-% Specify no. of blocks used for the system calibration NOT including the sensor block
-% as this determines the z values of each testpoint. 
-calBlockNum = 5;
-% Sensor positioned halfway up one block
-calSensorPosition = 0.5;
 
 
-% Total height in terms of blocks. Dimensions in millimeters.
-calTowerBlocks  = calBlockNum + calSensorPosition;
-BlockHeight = 19.2;
-
-% Z axis of each testpoint is different due to thickness differences
-% of the emitter plates between the fixed and portable systems.
-% Definitions are in millimeters. Final x, y and z vectors are in meters
-x=[(-3:1:3)*(31.75e-3)]; 
-x=[x x x x x x x];
-y=[ones(1,7)*95.25*1e-3 ones(1,7)*63.5*1e-3  ones(1,7)*31.75*1e-3 ones(1,7)*0  ones(1,7)*-31.75*1e-3 ones(1,7)*-63.5*1e-3 ones(1,7)*-95.25*1e-3 ];
-
-boardDepth = 15; % Millimeters
-z = (1e-3*(boardDepth + calTowerBlocks*BlockHeight)) * ones(1,49);
-
-% error('Please specify the system model ("portable" or "fixed")');
-
-
-
-
+[x,y,z] = fCalPoints(systemType);
 
 
 
@@ -134,7 +111,7 @@ z_matrix=[z_points1; z_points2; z_points3; z_points4; z_points5; z_points6; z_po
 % Specify the sampling frequency per sensor channel
 Fs = 100e3;
 Ts=1/Fs;
-numSamples = sampleSize;
+numSamples = 5000;
 
 % Specify the number of time samples, must be the same as the length of X
 t=0:Ts:(numSamples - 1) * Ts; 
@@ -174,7 +151,7 @@ G=repmat(f,2,1);
 % Initialise the DAQ unit and calculate the phase offsets between channels
 % due to the internal DAQ multiplexer
 fprintf('DAQ initialising\n');
-DAQ = fDAQSetup(Fs,sensorsToTrack, DAQType, length(t));
+DAQ = fDAQSetup(Fs,sensorsToTrack, DAQType, DAQString, length(t));
 DAQ_phase_offset = (2*pi*F/400000); % determines the phase offset introduced by the DAQ multiplexer
 fprintf('DAQ initialised\n');
 fprintf('DAQ Type %s\n', DAQType);

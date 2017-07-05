@@ -8,6 +8,10 @@
 % testpoints generated during system initialisation.
 % strengths of the tracking system.
 
+SYSTEM = 'Anser1';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev2';
+
 % Select which sensor channel you will use for calibration.
 % Each sensor must be calibrated seperatly due to gain variations
 % in the system amplifier electronics.
@@ -16,8 +20,7 @@ sensorToCal = input('Enter the sensor to Calibrate: ');
 
 % Select the desired sensor. This will also ensure the appropriate calibration
 % parameters are saved after calibration.
-sampleSize = 1000;
-sys = fSysSetup(sensorsToTrack, 'nidaq621X', 1000);
+sys = fSysSetup(sensorToCal, SYSTEM, DAQ, BOARDID);
 sys = fSysSensor(sys, sensorToCal);
 
 % Acquire the testpoints necessary for calibration.

@@ -8,27 +8,32 @@
 % with OpenIGTLink support.
 
 
+SYSTEM = 'Anser1';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev2';
+
+% Enable OpenIGTLink
+IGTENABLE = 1;
 
 % Settings for the tracking system
 % List of sensors to initialise.
 sensorsToTrack = [1,2];
+
 % Aquisition refresh rate in Hertz
 refreshRate = 40;
 
 % Enable flag for OpenIGTLink connection
-igtEnable = 1;
 transformName = 'ProbeToTracker';
 
 
 % Initialise the tracking system with two sensor channels [1,2] using the
 % National Instruments NI USB 6212DAQ
-sampleSize = 1000;
-sys = fSysSetup(sensorsToTrack, 'nidaq621X', 1000);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);
 pause(0.5);
 
 
 %% Enable OpenIGTLink connection
-if(igtEnable == 1)
+if(IGTENABLE == 1)
     slicerConnection = igtlConnect('127.0.0.1', 18944);
     transform.name = transformName;
 end
@@ -50,7 +55,7 @@ while (~FS.Stop())
    disp(sys.positionVector);
    
    % Prepare to transmit sensor position over network.
-   if(igtEnable == 1)
+   if(IGTENABLE == 1)
      
       % Rigid registration matrix.  
       sys.registration = eye(4,4);    
@@ -79,6 +84,6 @@ end
 FS.Clear(); 
 clear FS;
 % Cleanly disconnect from the OpenIGTLink server
-if(igtEnable == 1)
+if(IGTENABLE == 1)
     igtlDisconnect(slicerConnection);
 end
