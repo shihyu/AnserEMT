@@ -25,7 +25,7 @@ Bscale  = parameters(2)
 
 
 % The number of calibration points using the Duplo board
-numCalPoints = 49;
+numCalPoints = length(sys.xtestpoint);
 
 
 % Extract the [x,y,z] positions for readability
@@ -36,7 +36,7 @@ z = sys.ztestpoint-zoffset;
 
 
 % Calculate magnetic field at each testpoint with the mathematical current-filament model due a single emitter coil (coilIndex).
-for i = 1:numCalPoints;
+for i = 1:numCalPoints
     [Hx(i,:),Hy(i,:),Hz(i,:)]= spiralCoilFieldCalcMatrix(1,sys.xcoil(coilIndex,:),sys.ycoil(coilIndex,:),sys.zcoil(coilIndex,:),x(i),y(i),z(i));
 end
 

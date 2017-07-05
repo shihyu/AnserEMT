@@ -8,7 +8,7 @@
 % channels   = An array of channels identifiers for DAQ inputs
 % DAQType    = A string describing the type of DAQ/Interface being used. by default the NI-USB DAQ is utilised with the Session interface
 % numSamples = The desired number of samples to gather for each sampling interval
-function DAQ = fDAQSetup(sampleFreq, sensors, DAQType, numSamples)
+function DAQ = fDAQSetup(sampleFreq, sensors, DAQType, DAQString, numSamples)
 
 
     
@@ -18,7 +18,7 @@ daq.reset;
 
 % National Instruments DAQ specific options.
 
-if strcmp(DAQType, 'nidaq621X') == 1
+if strcmpi(DAQType, 'nidaq621X') == 1 ||strcmpi(DAQType, 'nidaq621Xoem') == 1
     % Fixes clock synchronisation issue with DAQmx 14.0+ driver
     daq.HardwareInfo.getInstance('DisableReferenceClockSynchronization',true);
     % Create the National Instruments DAQ session
@@ -30,10 +30,10 @@ end
 % Channel 0 is the emitter coil current sense. This is always initialised.
 % Channels 1, 2...are connected to the amplifier output of each sensor
 % Each channel is configured as a single-ended input.
-ch(1) = addAnalogInputChannel(DAQ,'Dev1', 0, 'Voltage');
+ch(1) = addAnalogInputChannel(DAQ,DAQString, channelMap(0), 'Voltage');
 ch(1).TerminalConfig = 'SingleEnded';
 for i = 1:length(sensors)
-    ch(i+1) = addAnalogInputChannel(DAQ,'Dev1', channelMap(sensors(i)), 'Voltage');
+    ch(i+1) = addAnalogInputChannel(DAQ, DAQString, channelMap(sensors(i)), 'Voltage');
     ch(i+1).TerminalConfig = 'SingleEnded';
 end
 

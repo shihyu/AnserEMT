@@ -14,7 +14,7 @@ function sys = fSysSave(sys)
 
 % Store the active sensor parameters.
 sys.zOffset(sys.SensorNo) = sys.zOffsetActive;
-sys.BStore(:,:,sys.SensorNo) = sys.BStoreActive;
+%sys.BStore(:,:,sys.SensorNo) = sys.BStoreActive;
 sys.BScale(sys.SensorNo,:) = sys.BScaleActive;
 
 

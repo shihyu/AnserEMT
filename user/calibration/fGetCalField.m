@@ -12,7 +12,7 @@ function sys = fGetCalField(sys)
 % sts = The system object with modified calibration field strength values for a particular sensor. 
 
 % 7x7 grid of points on the Duplo board used in the Anser EMT calibration routine.
-numPoints = 49;
+numPoints = length(sys.xtestpoint);
 
 % Iterate over the testpoints, prompting the uses to press 'Enter' when testpoint is ready for acquisition
 for i = 1:numPoints
