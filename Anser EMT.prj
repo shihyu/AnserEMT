@@ -1,11 +1,15 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3223148977" file="C:\Users\Alex\Documents\repositories\anseremt\Anser EMT.prj" location="C:\Users\Alex\Documents\repositories\anseremt" name="Anser EMT" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="2371122688" file="C:\Users\Alex\Documents\repositories\anseremt\Anser EMT.prj" location="C:\Users\Alex\Documents\repositories\anseremt" name="Anser EMT" target="target.mlapps" target-name="Package App">
     <param.appname>Anser EMT</param.appname>
     <param.authnamewatermark>H. A. Jaeger</param.authnamewatermark>
     <param.email>h.jaeger@umail.ucc.ie</param.email>
     <param.company>Univeristy College Cork, Ireland</param.company>
-    <param.icon />
-    <param.icons />
+    <param.icon>${PROJECT_ROOT}\Anser EMT_resources\icon_24.png</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\Anser EMT_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\Anser EMT_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\Anser EMT_resources\icon_16.png</file>
+    </param.icons>
     <param.summary>Graphical User Interface for the Anser EMT platform</param.summary>
     <param.description>Copyright (c) 2017, H. A. Jaeger, K O' Donoghue
 &lt;br&gt;
@@ -49,8 +53,6 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
       <param.authnamewatermark />
       <param.email />
       <param.company />
-      <param.icon />
-      <param.icons />
       <param.screenshot />
       <param.version />
       <param.platforms />
