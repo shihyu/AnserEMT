@@ -3,7 +3,7 @@
     <param.appname>Anser EMT</param.appname>
     <param.authnamewatermark>H. A. Jaeger</param.authnamewatermark>
     <param.email>h.jaeger@umail.ucc.ie</param.email>
-    <param.company>Univeristy College Cork, Ireland</param.company>
+    <param.company>University College Cork, Ireland</param.company>
     <param.icon>${PROJECT_ROOT}\Anser EMT_resources\icon_24.png</param.icon>
     <param.icons>
       <file>${PROJECT_ROOT}\Anser EMT_resources\icon_48.png</file>
@@ -52,7 +52,6 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
     <unset>
       <param.authnamewatermark />
       <param.email />
-      <param.company />
       <param.screenshot />
       <param.version />
       <param.platforms />
@@ -63,13 +62,29 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
     </fileset.main>
     <fileset.depfun>
       <file>${PROJECT_ROOT}\daq\dataListen.m</file>
+      <file>${PROJECT_ROOT}\daq\fDAQAcquire.m</file>
       <file>${PROJECT_ROOT}\daq\fDAQMap.m</file>
       <file>${PROJECT_ROOT}\daq\fDAQSetup.m</file>
       <file>${PROJECT_ROOT}\data\sys.mat</file>
       <file>${PROJECT_ROOT}\fSysSetup.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlConnect.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlDisconnect.m</file>
       <file>${PROJECT_ROOT}\model\spiralCoilDimensionCalc.m</file>
+      <file>${PROJECT_ROOT}\model\spiralCoilFieldCalcMatrix.m</file>
+      <file>${PROJECT_ROOT}\user\calibration\fCalibrate.m</file>
       <file>${PROJECT_ROOT}\user\calibration\fCalPoints.m</file>
+      <file>${PROJECT_ROOT}\user\calibration\fCheck.m</file>
+      <file>${PROJECT_ROOT}\user\calibration\fGetCalField.m</file>
       <file>${PROJECT_ROOT}\user\misc\fTitle.m</file>
+      <file>${PROJECT_ROOT}\user\objective\objectiveCoilSquareCalc3D.m</file>
+      <file>${PROJECT_ROOT}\user\objective\objectiveScalingOffsetZ.m</file>
+      <file>${PROJECT_ROOT}\user\system\fSysDAQUpdate.m</file>
+      <file>${PROJECT_ROOT}\user\system\fSysDecodeField.m</file>
+      <file>${PROJECT_ROOT}\user\system\fSysGetField.m</file>
+      <file>${PROJECT_ROOT}\user\system\fSysSave.m</file>
+      <file>${PROJECT_ROOT}\user\system\fSysSensor.m</file>
+      <file>${PROJECT_ROOT}\user\tracking\fGetSensorPosition.m</file>
+      <file>${PROJECT_ROOT}\user\tracking\fSphericalToMatrix.m</file>
     </fileset.depfun>
     <fileset.resources />
     <fileset.package />
