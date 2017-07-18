@@ -8,6 +8,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
+SAMPLESIZE = 5000;
 
 
 % Calls the setup function for the tracking system with two sensor channels
@@ -15,4 +16,4 @@ BOARDID = 'Dev2';
 % the tracking system, including coil dimensions, calibration data and the
 % DAQ object.
 sensorsToTrack = [1, 2];
-sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE);

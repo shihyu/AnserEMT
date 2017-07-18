@@ -10,6 +10,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
+SAMPLESIZE = 5000;
 
 % Channel the DAQ to inspect. This does NOT directly corresponding to the sensor
 % channelLook at the DAQ pin mapping
@@ -18,7 +19,7 @@ sensorsToTrack = [1,2];
 % Refresh rate of the position acquisition (Hz)
 refreshRate = 200;
 
-sys = fSysSetup(sensorsToTrack,SYSTEM, DAQ, BOARDID);
+sys = fSysSetup(sensorsToTrack,SYSTEM, DAQ, BOARDID, SAMPLESIZE);
 
 % Get access to the global data structure used by the DAQ
 global sessionData;

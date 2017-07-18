@@ -11,6 +11,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
+SAMPLESIZE = 5000;
 
 % Select which sensor channel you will use for calibration.
 % Each sensor must be calibrated seperatly due to gain variations
@@ -20,7 +21,7 @@ sensorToCal = input('Enter the sensor to Calibrate: ');
 
 % Select the desired sensor. This will also ensure the appropriate calibration
 % parameters are saved after calibration.
-sys = fSysSetup(sensorToCal, SYSTEM, DAQ, BOARDID);
+sys = fSysSetup(sensorToCal, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
 sys = fSysSensor(sys, sensorToCal);
 
 % Acquire the testpoints necessary for calibration.

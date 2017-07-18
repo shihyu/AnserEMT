@@ -11,6 +11,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
+SAMPLESIZE = 1000;
 
 % Enable OpenIGTLink
 IGTENABLE = 1;
@@ -28,7 +29,7 @@ transformName = 'ProbeToTracker';
 
 % Initialise the tracking system with two sensor channels [1,2] using the
 % National Instruments NI USB 6212DAQ
-sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
 pause(0.5);
 
 
@@ -51,7 +52,7 @@ while (~FS.Stop())
    % Print the position vector on the command line. The format of the
    % vector is [x,y,z,theta,phi]
    sys = fSysDAQUpdate(sys);
-   sys = fGetSensorPosition(sys, sensorsToTrack(2));
+   sys = fGetSensorPosition(sys, sensorsToTrack(1));
    disp(sys.positionVector);
    
    % Prepare to transmit sensor position over network.

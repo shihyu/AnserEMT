@@ -10,6 +10,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
+SAMPLESIZE = 1000;
 
 % Place the sensor channels to use in this vector. Add further channels to
 % this vector if more sensors are required
@@ -19,7 +20,7 @@ sensorsToTrack = [1,2];
 refreshRate = 40;
 
 % Call the setup function for the system.
-sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
 
 % Give DAQ some time to start.
 pause(0.5);
@@ -32,7 +33,7 @@ while (~FS.Stop())
    sys = fSysDAQUpdate(sys);
    
    % Acquire the position for one sensor, the first in sensorsToTrack
-   sys = fGetSensorPosition(sys, sensorsToTrack(2));
+   sys = fGetSensorPosition(sys, sensorsToTrack(1));
 
    % Copy the position to a local variable and print to screen
    position = sys.positionVector;

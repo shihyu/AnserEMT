@@ -15,15 +15,15 @@
 % OUTPUT:   
 %       sys         - A structure containing the system settings (dimensions,
 %                    constants, frequencies etc
-function sys = fSysSetup(sensorsToTrack, systemType, DAQType, DAQString)
+function sys = fSysSetup(sensorsToTrack, systemType, DAQType, DAQString, DAQSample)
 
 % Adds adjacent directories to the workspace
 addpath(genpath(pwd))
 fTitle();
 
 
-if (nargin ~= 4)
-    error('fSysSetup takes four arguements');
+if (nargin ~= 5)
+    error('fSysSetup takes five arguements');
 end
 
 
@@ -111,7 +111,7 @@ z_matrix=[z_points1; z_points2; z_points3; z_points4; z_points5; z_points6; z_po
 % Specify the sampling frequency per sensor channel
 Fs = 100e3;
 Ts=1/Fs;
-numSamples = 5000;
+numSamples = DAQSample;
 
 % Specify the number of time samples, must be the same as the length of X
 t=0:Ts:(numSamples - 1) * Ts; 
