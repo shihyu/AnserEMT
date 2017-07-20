@@ -11,7 +11,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
-SAMPLESIZE = 1000;
+SAMPLESIZE = 5000;
 
 % Enable OpenIGTLink
 IGTENABLE = 1;

@@ -10,7 +10,7 @@
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev2';
-SAMPLESIZE = 1000;
+SAMPLESIZE = 5000;
 
 % Place the sensor channels to use in this vector. Add further channels to
 % this vector if more sensors are required

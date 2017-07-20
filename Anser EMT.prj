@@ -1,7 +1,7 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1179788397" file="C:\Users\Alex\Documents\repositories\anseremt\Anser EMT.prj" location="C:\Users\Alex\Documents\repositories\anseremt" name="Anser EMT" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="2925362996" file="C:\Users\Alex\Documents\repositories\anseremt\Anser EMT.prj" location="C:\Users\Alex\Documents\repositories\anseremt" name="Anser EMT" target="target.mlapps" target-name="Package App">
     <param.appname>Anser EMT</param.appname>
-    <param.authnamewatermark>H. A. Jaeger</param.authnamewatermark>
+    <param.authnamewatermark>H. A. Jaeger, K. O'Donoghue</param.authnamewatermark>
     <param.email>h.jaeger@umail.ucc.ie</param.email>
     <param.company>University College Cork, Ireland</param.company>
     <param.icon>${PROJECT_ROOT}\Anser EMT_resources\icon_24.png</param.icon>
@@ -50,7 +50,6 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
     <param.output>C:\Users\Alex\Documents\repositories\anseremt</param.output>
     <param.guid>3ce1b35e-8aee-4069-9e3f-ccc7fe7cb881</param.guid>
     <unset>
-      <param.authnamewatermark />
       <param.email />
       <param.screenshot />
       <param.version />
@@ -67,6 +66,11 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
       <file>${PROJECT_ROOT}\daq\fDAQSetup.m</file>
       <file>${PROJECT_ROOT}\data\sys.mat</file>
       <file>${PROJECT_ROOT}\fSysSetup.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlComputeCrc.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlConnect.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlDisconnect.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlSendTransform.m</file>
+      <file>${PROJECT_ROOT}\igtlink\igtlinkAPI\igtlTimestampNow.m</file>
       <file>${PROJECT_ROOT}\model\spiralCoilDimensionCalc.m</file>
       <file>${PROJECT_ROOT}\model\spiralCoilFieldCalcMatrix.m</file>
       <file>${PROJECT_ROOT}\user\calibration\fCalibrate.m</file>
@@ -83,11 +87,6 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
       <file>${PROJECT_ROOT}\user\system\fSysSensor.m</file>
       <file>${PROJECT_ROOT}\user\tracking\fGetSensorPosition.m</file>
       <file>${PROJECT_ROOT}\user\tracking\fSphericalToMatrix.m</file>
-      <file>C:\Users\Alex\Documents\repositories\MatlabOpenIGTLinkInterface\igtlComputeCrc.m</file>
-      <file>C:\Users\Alex\Documents\repositories\MatlabOpenIGTLinkInterface\igtlConnect.m</file>
-      <file>C:\Users\Alex\Documents\repositories\MatlabOpenIGTLinkInterface\igtlDisconnect.m</file>
-      <file>C:\Users\Alex\Documents\repositories\MatlabOpenIGTLinkInterface\igtlSendTransform.m</file>
-      <file>C:\Users\Alex\Documents\repositories\MatlabOpenIGTLinkInterface\igtlTimestampNow.m</file>
     </fileset.depfun>
     <fileset.resources />
     <fileset.package />
