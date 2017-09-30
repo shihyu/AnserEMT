@@ -8,20 +8,25 @@
 % with OpenIGTLink support.
 
 
+% SYSTEM = 'Anser1';
+% DAQ = 'nidaq621Xoem';
+% BOARDID = 'Dev2';
+% SAMPLESIZE = 2000;
+
 SYSTEM = 'Anser1';
-DAQ = 'nidaq621Xoem';
-BOARDID = 'Dev2';
-SAMPLESIZE = 1000;
+DAQ = 'mccdaq';
+BOARDID = 'Board0';
+SAMPLESIZE = 2000;
 
 % Enable OpenIGTLink
 IGTENABLE = 1;
 
 % Settings for the tracking system
 % List of sensors to initialise.
-sensorsToTrack = [1,2];
+sensorsToTrack = [2];
 
 % Aquisition refresh rate in Hertz
-refreshRate = 40;
+refreshRate = 1000;
 
 % Enable flag for OpenIGTLink connection
 transformName = 'ProbeToTracker';

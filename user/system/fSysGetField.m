@@ -27,13 +27,10 @@ Y=(X.*sys.G)*sys.E;
 % Calculate the amplitude of each component, both current and magnetic field measurements are in here
 MagY=2*abs(Y);
 % Calculate the phase angle of the field
-PhaseY=angle(Y); 
-
-
+PhaseY=wrapTo2Pi(angle(Y)); 
 
 % Calculate the phase between the current and the magnetic field. The helps determine the axial orientation of the sensor.
-Phase1 = PhaseY(1,:) - PhaseY(2,:)-sys.DAQPhase; 
-
+Phase1 = PhaseY(1,:) - (PhaseY(2,:) - sys.DAQPhase(1,:)); 
 
 
 

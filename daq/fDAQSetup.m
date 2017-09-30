@@ -23,6 +23,8 @@ if strcmpi(DAQType, 'nidaq621X') == 1 ||strcmpi(DAQType, 'nidaq621Xoem') == 1
     daq.HardwareInfo.getInstance('DisableReferenceClockSynchronization',true);
     % Create the National Instruments DAQ session
     DAQ = daq.createSession('ni');
+elseif strcmpi(DAQType, 'mccdaq')
+    DAQ = daq.createSession('mcc');
 else
     error('DAQ Type %s is not valid', DAQType);
 end
@@ -30,11 +32,13 @@ end
 % Channel 0 is the emitter coil current sense. This is always initialised.
 % Channels 1, 2...are connected to the amplifier output of each sensor
 % Each channel is configured as a single-ended input.
-ch(1) = addAnalogInputChannel(DAQ,DAQString, channelMap(0), 'Voltage');
+ch(1) = addAnalogInputChannel(DAQ, DAQString, channelMap(0), 'Voltage');
 ch(1).TerminalConfig = 'SingleEnded';
+ch(1).Range = [-10,10];
 for i = 1:length(sensors)
     ch(i+1) = addAnalogInputChannel(DAQ, DAQString, channelMap(sensors(i)), 'Voltage');
     ch(i+1).TerminalConfig = 'SingleEnded';
+    ch(i+1).Range = [-10,10];
 end
 
 % Set the sampling frequency, samples per scan and

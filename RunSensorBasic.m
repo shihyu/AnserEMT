@@ -7,17 +7,23 @@
 % Use this script as a reference program for writing EMT applications.
 
 
+% SYSTEM = 'Anser1';
+% DAQ = 'nidaq621Xoem';
+% BOARDID = 'Dev2';
+% SAMPLESIZE = 1000;
+
 SYSTEM = 'Anser1';
-DAQ = 'nidaq621Xoem';
-BOARDID = 'Dev2';
-SAMPLESIZE = 1000;
+DAQ = 'mccdaq';
+BOARDID = 'Board0';
+SAMPLESIZE = 5000;
+
 
 % Place the sensor channels to use in this vector. Add further channels to
 % this vector if more sensors are required
-sensorsToTrack = [1,2];
+sensorsToTrack = [2];
 
 % Aquisition refresh rate in Hertz
-refreshRate = 40;
+refreshRate = 50;
 
 % Call the setup function for the system.
 sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
@@ -27,6 +33,7 @@ pause(0.5);
 
 FS = stoploop();
 while (~FS.Stop())
+    tic
    % Retrieve the latest information from the DAQ. This call retrieves data
    % from all sensors simultaneously and should be called ONLY ONCE per
    % acquisition iteration.
@@ -34,10 +41,11 @@ while (~FS.Stop())
    
    % Acquire the position for one sensor, the first in sensorsToTrack
    sys = fGetSensorPosition(sys, sensorsToTrack(1));
-
+ 
    % Copy the position to a local variable and print to screen
    position = sys.positionVector;
    disp(position);
+   toc;
    
    % Call again for a different sensor, where X is the number of the
    % sensor channel. This will overwrite the previous stored position in
@@ -46,4 +54,5 @@ while (~FS.Stop())
    
    % Required 1ms delay for DAQ
    pause(1/refreshRate);
+
 end

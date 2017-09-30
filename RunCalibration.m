@@ -3,15 +3,16 @@
 % All rights reserved.
 % This code is licensed under the BSD 3-Clause License.
 
-% Run a real-time fast-fourier tranform a single sensor.
-% Use this script to calibrate the tracking system using 49 predefined
-% testpoints generated during system initialisation.
-% strengths of the tracking system.
 
 SYSTEM = 'Anser1';
-DAQ = 'nidaq621Xoem';
-BOARDID = 'Dev2';
+DAQ = 'mccdaq';
+BOARDID = 'Board0';
 SAMPLESIZE = 5000;
+
+% SYSTEM = 'Anser1';
+% DAQ = 'nidaq621Xoem';
+% BOARDID = 'Dev2';
+% SAMPLESIZE = 10000;
 
 % Select which sensor channel you will use for calibration.
 % Each sensor must be calibrated seperatly due to gain variations

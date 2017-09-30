@@ -118,7 +118,7 @@ t=0:Ts:(numSamples - 1) * Ts;
 
 % Define the transmission frequencies of the emitter coil
 % These will be used for demodulation
-F=[20500 21500 22500 23500 24500 25500 26500 27500];
+F=[20300 21700 22400 23600 24500 25100 26800 27500];
 % Define the demodulation matrix for the asynchronous demodulation scheme
 E=[exp(2*pi*F(1)*t*1i); exp(2*pi*F(2)*t*1i);  exp(2*pi*F(3)*t*1i); exp(2*pi*F(4)*t*1i); exp(2*pi*F(5)*t*1i); exp(2*pi*F(6)*t*1i); exp(2*pi*F(7)*t*1i) ;exp(2*pi*F(8)*t*1i)]; %exponential matrix thing that handles the demodulation
 E=E';
@@ -152,7 +152,7 @@ G=repmat(f,2,1);
 % due to the internal DAQ multiplexer
 fprintf('DAQ initialising\n');
 DAQ = fDAQSetup(Fs,sensorsToTrack, DAQType, DAQString, length(t));
-DAQ_phase_offset = (2*pi*F/400000); % determines the phase offset introduced by the DAQ multiplexer
+DAQ_phase_offset = (2*pi*F/400000);% DAQ_phase_offset + -5e-5*F + 1.4591; % Adds filter phase effect
 fprintf('DAQ initialised\n');
 fprintf('DAQ Type %s\n', DAQType);
 
