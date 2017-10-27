@@ -15,7 +15,7 @@
 % OUTPUT:   
 %       sys         - A structure containing the system settings (dimensions,
 %                    constants, frequencies etc
-function sys = fSysSetup(sensorsToTrack, systemType, DAQType, DAQString, DAQSample)
+function sys = fSysSetup(sensorsToTrack, systemType, DAQType, DAQString, DAQSample, ModelType)
 
 % Adds adjacent directories to the workspace
 addpath(genpath(pwd))
@@ -38,12 +38,9 @@ u0 = 4*pi*1e-7;
 
 
 
-%% Define exact locations of each test point on the duplo board emitter plate.
+%% Define exact locations of each test point on the emitter plate.
 % All test points are with respect to the emitter coils and are used for
 % calibration.
-
-
-
 [x,y,z] = fCalPoints(systemType);
 
 
@@ -61,15 +58,16 @@ thickness=1.6e-3;
 Nturns=25;
 
 % Calculate generic points for both the vertical and angled coil positions
+[x_points_angled,y_points_angled,z_points_angled] = fGetCoilDimensions(len, wid, spacing, thickness, angle, Nturns, ModelType);
 [x_points_angled,y_points_angled,z_points_angled]=spiralCoilDimensionCalc(Nturns,l,w,s,thickness,pi/4); %angled coils at 45 degrees
 [x_points_vert,y_points_vert,z_points_vert]=spiralCoilDimensionCalc(Nturns,l,w,s,thickness,pi/2); %coils that are square with the lego
 
-% Now define the positions of each centre point of each coil
+% Define the positions of each centre point of each coil
 
 x_centre_points=[-93.543 0 93.543 -68.55 68.55 -93.543 0 93.543]*1e-3;
 y_centre_points=[93.543 68.55 93.543 0 0 -93.543 -68.55 -93.543]*1e-3;
 
-% Now add the center position offsets to each coil
+% Add the center position offsets to each coil
 x_points1=x_points_vert+x_centre_points(1);
 x_points2=x_points_angled+x_centre_points(2);
 x_points3=x_points_vert+x_centre_points(3);
@@ -118,7 +116,7 @@ t=0:Ts:(numSamples - 1) * Ts;
 
 % Define the transmission frequencies of the emitter coil
 % These will be used for demodulation
-F=[20300 21700 22400 23600 24500 25100 26800 27500];
+F=[20000 22000 24000 26000 28000 30000 32000 34000];
 % Define the demodulation matrix for the asynchronous demodulation scheme
 E=[exp(2*pi*F(1)*t*1i); exp(2*pi*F(2)*t*1i);  exp(2*pi*F(3)*t*1i); exp(2*pi*F(4)*t*1i); exp(2*pi*F(5)*t*1i); exp(2*pi*F(6)*t*1i); exp(2*pi*F(7)*t*1i) ;exp(2*pi*F(8)*t*1i)]; %exponential matrix thing that handles the demodulation
 E=E';
@@ -142,7 +140,7 @@ bf  = fir1(N, Fc, 'low', win, flag);
 Hd = dfilt.dffir(bf); 
 f=Hd.Numerator;
 
-% Repeats the filter cooefficnets, must have the same number of rows as there are DAQ input signals.
+% Repeats the filter coefficients, must have the same number of rows as there are DAQ input signals.
 G=repmat(f,2,1); 
 
 

@@ -50,7 +50,6 @@ and the Institute of Image-Guided Surgery (IHU), Strasbourg in supporting this w
     <param.output>C:\Users\Alex\Documents\repositories\anseremt</param.output>
     <param.guid>3ce1b35e-8aee-4069-9e3f-ccc7fe7cb881</param.guid>
     <unset>
-      <param.email />
       <param.screenshot />
       <param.version />
       <param.platforms />

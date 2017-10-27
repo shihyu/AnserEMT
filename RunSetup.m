@@ -6,10 +6,10 @@
 % Use this file as a blank starting point for EMT applications
 
 SYSTEM = 'Anser1';
-DAQ = 'mccdaq';
-BOARDID = 'board0';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev1';
 SAMPLESIZE = 5000;
-
+MODELTYPE = 'exact';
 
 % Calls the setup function for the tracking system with two sensor channels
 % [1,2] enabled. The returned object contains all the information regarding

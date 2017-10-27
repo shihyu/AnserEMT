@@ -12,7 +12,7 @@ function [Hx,Hy,Hz]= spiralCoilFieldCalcMatrix(I,x_points,y_points,z_points,Px,P
 % I       = The filament current
 % a_start = x,y,z coordinates of start of filament
 % a_end   = x,y,z coordinates of end of filament
-% P       = x,y,z coordinates of obseration point at which to sense the magnetic field
+% P       = x,y,z coordinates of observation point at which to sense the magnetic field
 
 % Output
 % [Hx,Hy,Hz] = Magnetic field intensity vector experienced at observation point P

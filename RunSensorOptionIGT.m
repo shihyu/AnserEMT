@@ -14,9 +14,10 @@
 % SAMPLESIZE = 2000;
 
 SYSTEM = 'Anser1';
-DAQ = 'mccdaq';
-BOARDID = 'Board0';
-SAMPLESIZE = 2000;
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev1';
+SAMPLESIZE = 5000;
+MODELTYPE = 'exact';
 
 % Enable OpenIGTLink
 IGTENABLE = 1;

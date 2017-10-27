@@ -13,9 +13,10 @@
 % SAMPLESIZE = 1000;
 
 SYSTEM = 'Anser1';
-DAQ = 'mccdaq';
-BOARDID = 'Board0';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev1';
 SAMPLESIZE = 5000;
+MODELTYPE = 'exact';
 
 
 % Place the sensor channels to use in this vector. Add further channels to

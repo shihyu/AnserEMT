@@ -22,7 +22,7 @@ if sys.SensorNo == -1
     error('Please select the active sensor using fSysSensor()');
 end
 
-% Demodulate the stored samples and update the system objext with the new field strengths.
+% Demodulate the stored samples and update the system object with the new field strengths.
 sys = fSysGetField(sys);
 
 % Resolve the position of the sensor as a 5-DOF vector.

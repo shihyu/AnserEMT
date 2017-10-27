@@ -4,15 +4,16 @@
 % This code is licensed under the BSD 3-Clause License.
 
 
-SYSTEM = 'Anser1';
-DAQ = 'mccdaq';
-BOARDID = 'Board0';
-SAMPLESIZE = 5000;
-
 % SYSTEM = 'Anser1';
-% DAQ = 'nidaq621Xoem';
-% BOARDID = 'Dev2';
-% SAMPLESIZE = 10000;
+% DAQ = 'mccdaq';
+% BOARDID = 'Board0';
+% SAMPLESIZE = 5000;
+
+SYSTEM = 'Anser1';
+DAQ = 'nidaq621Xoem';
+BOARDID = 'Dev1';
+SAMPLESIZE = 5000;
+MODELTYPE = 'exact';
 
 % Select which sensor channel you will use for calibration.
 % Each sensor must be calibrated seperatly due to gain variations
