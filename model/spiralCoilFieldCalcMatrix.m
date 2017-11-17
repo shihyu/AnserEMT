@@ -19,7 +19,7 @@ function [Hx,Hy,Hz]= spiralCoilFieldCalcMatrix(I,x_points,y_points,z_points,Px,P
 
 % Mathematical formulae from which the code is derived can found from the cited paper above
 
-num_p=length(x_points);
+num_p=size(x_points,2);
 
 ax=x_points(:,2:num_p)-x_points(:,1:(num_p-1));
 ay=y_points(:,2:num_p)-y_points(:,1:(num_p-1));

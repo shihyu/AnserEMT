@@ -23,7 +23,7 @@ sensorToCal = input('Enter the sensor to Calibrate: ');
 
 % Select the desired sensor. This will also ensure the appropriate calibration
 % parameters are saved after calibration.
-sys = fSysSetup(sensorToCal, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
+sys = fSysSetup(sensorToCal, SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
 sys = fSysSensor(sys, sensorToCal);
 
 % Acquire the testpoints necessary for calibration.

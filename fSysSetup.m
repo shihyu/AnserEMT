@@ -22,7 +22,7 @@ addpath(genpath(pwd))
 fTitle();
 
 
-if (nargin ~= 5)
+if (nargin ~= 6)
     error('fSysSetup takes five arguements');
 end
 
@@ -58,9 +58,11 @@ thickness=1.6e-3;
 Nturns=25;
 
 % Calculate generic points for both the vertical and angled coil positions
-[x_points_angled,y_points_angled,z_points_angled] = fGetCoilDimensions(len, wid, spacing, thickness, angle, Nturns, ModelType);
-[x_points_angled,y_points_angled,z_points_angled]=spiralCoilDimensionCalc(Nturns,l,w,s,thickness,pi/4); %angled coils at 45 degrees
-[x_points_vert,y_points_vert,z_points_vert]=spiralCoilDimensionCalc(Nturns,l,w,s,thickness,pi/2); %coils that are square with the lego
+[x_points_angled,y_points_angled,z_points_angled] = fGetCoilDimensions(l, w, s, thickness, pi/4, Nturns, ModelType);
+[x_points_vert,y_points_vert,z_points_vert] = fGetCoilDimensions(l, w, s, thickness, pi/2, Nturns, ModelType);
+
+%[x_points_angled,y_points_angled,z_points_angled]=spiralCoilDimensionCalc(Nturns,l,w,s,thickness,pi/4); %angled coils at 45 degrees
+%[x_points_vert,y_points_vert,z_points_vert]=spiralCoilDimensionCalc(Nturns,l,w,s,thickness,pi/2); %coils that are square with the lego
 
 % Define the positions of each centre point of each coil
 
@@ -159,7 +161,7 @@ fprintf('DAQ Type %s\n', DAQType);
 %% Position algorithm parameters
 % Define parameters for position sensing algorithm
 options = optimset('TolFun',1e-16,'TolX',1e-6,'MaxFunEvals',500,'MaxIter',40,'Display','off'); % sets parameters for position algorithm
-
+options = optimoptions(@lsqnonlin,'UseParallel',false,'TolFun',1e-16,'TolX',1e-6,'MaxFunEvals',500,'MaxIter',40,'Display','off');
 % Sets the threshold for the algorithm residual, if the residual is greater than this, the algorithm has failed
 resThreshold=1e-15; 
 

@@ -15,12 +15,12 @@ MODELTYPE = 'exact';
 
 % Channel the DAQ to inspect. This does NOT directly corresponding to the sensor
 % channelLook at the DAQ pin mapping
-sensorsToTrack = [2];
+sensorsToTrack = [1];
 
 % Refresh rate of the position acquisition (Hz)
 refreshRate = 20;
 
-sys = fSysSetup(sensorsToTrack,SYSTEM, DAQ, BOARDID, SAMPLESIZE);
+sys = fSysSetup(sensorsToTrack,SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
 
 % Get access to the global data structure used by the DAQ
 global sessionData;

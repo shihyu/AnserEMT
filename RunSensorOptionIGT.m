@@ -7,16 +7,10 @@
 % Use this script as a reference program for writing EMT applications 
 % with OpenIGTLink support.
 
-
-% SYSTEM = 'Anser1';
-% DAQ = 'nidaq621Xoem';
-% BOARDID = 'Dev2';
-% SAMPLESIZE = 2000;
-
 SYSTEM = 'Anser1';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
-SAMPLESIZE = 5000;
+SAMPLESIZE = 1000;
 MODELTYPE = 'exact';
 
 % Enable OpenIGTLink
@@ -24,7 +18,7 @@ IGTENABLE = 1;
 
 % Settings for the tracking system
 % List of sensors to initialise.
-sensorsToTrack = [2];
+sensorsToTrack = [1];
 
 % Aquisition refresh rate in Hertz
 refreshRate = 1000;
@@ -35,7 +29,7 @@ transformName = 'ProbeToTracker';
 
 % Initialise the tracking system with two sensor channels [1,2] using the
 % National Instruments NI USB 6212DAQ
-sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
 pause(0.5);
 
 
@@ -50,8 +44,8 @@ end
 % This loop is cancelled cleanly using the 3rd party stoploop function.
 FS = stoploop();
 while (~FS.Stop())
-   
-   % Update the tracking system with new sample data from the DAQ.
+
+    % Update the tracking system with new sample data from the DAQ.
    % Calculate the position of a specific sensor in sensorsToTrack.
    % Change the initial condition of the solver to the resolved position
    % (this will reduce solving time on each iteration)
@@ -83,6 +77,7 @@ while (~FS.Stop())
    % This pause is required to allow the DAQ background DMA to work.
    % Otherwise transfer might freeze and data does not update
    pause(1/refreshRate);
+   
 end
 
 
