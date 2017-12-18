@@ -6,7 +6,7 @@
 % Run the system for a single sensor.
 % Use this script as a reference program for writing EMT applications.
 
-SYSTEM = 'Anser1';
+SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
 SAMPLESIZE = 1000;

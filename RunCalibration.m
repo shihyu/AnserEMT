@@ -9,7 +9,7 @@
 % BOARDID = 'Board0';
 % SAMPLESIZE = 5000;
 
-SYSTEM = 'Anser1';
+SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
 SAMPLESIZE = 5000;
@@ -23,7 +23,7 @@ sensorToCal = input('Enter the sensor to Calibrate: ');
 
 % Select the desired sensor. This will also ensure the appropriate calibration
 % parameters are saved after calibration.
-sys = fSysSetup(sensorToCal, SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
+sys = fSysSetup(sensorsToTrack,SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
 sys = fSysSensor(sys, sensorToCal);
 
 % Acquire the testpoints necessary for calibration.

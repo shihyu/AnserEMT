@@ -8,7 +8,7 @@
 % with OpenIGTLink support.
 
 
-SYSTEM = 'Anser1';
+SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
 SAMPLESIZE = 1000;
@@ -31,7 +31,7 @@ transformName2 = 'ProbeToTracker2';
 
 % Initialise the tracking system with two sensor channels [1,2] using the
 % National Instruments NI USB 6212DAQ
-sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE);
+sys = fSysSetup(sensorsToTrack, SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
 pause(0.5);
 
 

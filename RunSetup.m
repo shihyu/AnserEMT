@@ -5,7 +5,7 @@
 
 % Use this file as a blank starting point for EMT applications
 
-SYSTEM = 'Anser1';
+SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
 SAMPLESIZE = 5000;

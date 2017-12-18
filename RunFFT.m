@@ -7,7 +7,7 @@
 % Use this script as a starting point for visually inspecting the field
 % strengths of the tracking system.
 
-SYSTEM = 'Anser1';
+SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
 SAMPLESIZE = 5000;
