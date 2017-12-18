@@ -21,9 +21,9 @@ MODELTYPE = 'exact';
 % Sensor indices begin at '1'
 sensorToCal = input('Enter the sensor to Calibrate: ');
 
-% Select the desired sensor. This will also ensure the appropriate calibration
+% Select the desired sensor channel. This will also ensure the appropriate calibration
 % parameters are saved after calibration.
-sys = fSysSetup(sensorsToTrack,SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
+sys = fSysSetup(sensorToCal,SYSTEM, DAQ, BOARDID, SAMPLESIZE, MODELTYPE);
 sys = fSysSensor(sys, sensorToCal);
 
 % Acquire the testpoints necessary for calibration.

@@ -38,10 +38,10 @@ function [x,y,z] = fCalPoints(calibrationtype)
     probeHeight = 80e-3;
     x=(-3:1:3)*(spacing); 
     x=[x x x x x x x];
-    y=[ones(1,9)*spacing*4 ones(1,9)*spacing*3  ones(1,9)*spacing*2 ones(1,9)*spacing*1 ones(1,9)*0 -ones(1,9)*spacing*1 -ones(1,9)*spacing*2 -ones(1,9)*spacing*3 -ones(1,9)*spacing*4];
+    y=[ones(1,7)*spacing*3  ones(1,7)*spacing*2 ones(1,7)*spacing*1 ones(1,7)*0 -ones(1,7)*spacing*1 -ones(1,7)*spacing*2 -ones(1,7)*spacing*3];
 
     boardDepth = 4e-3; % Millimeters
-    z = ((boardDepth + probeHeight)) * ones(1,81);
+    z = ((boardDepth + probeHeight)) * ones(1,49);
  end
  
 end
