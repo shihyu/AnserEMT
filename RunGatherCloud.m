@@ -3,8 +3,7 @@
 % All rights reserved.
 % This code is licensed under the BSD 3-Clause License.
 
-% Run the system for a single sensor.
-% Use this script as a reference program for writing EMT applications.
+% Run the system for a single sensor while storing the acquired points.
 
 SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';

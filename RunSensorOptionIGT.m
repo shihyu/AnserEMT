@@ -10,7 +10,7 @@
 SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
-SAMPLESIZE = 1000;
+SAMPLESIZE = 250;
 MODELTYPE = 'exact';
 
 % Enable OpenIGTLink

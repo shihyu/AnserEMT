@@ -200,6 +200,7 @@ sys.zcoil = z_matrix;
 
 sys.Fs = Fs;
 sys.DAQType = DAQType;
+sys.modelType = ModelType;
 sys.NIDAQ = DAQ;
 sys.DAQPhase = DAQ_phase_offset;
 sys.rawData = zeros(numSamples,length(sensorsToTrack));

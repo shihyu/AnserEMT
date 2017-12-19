@@ -16,6 +16,10 @@ function solution = fSysDecodeField(sys)
 % 'currentPandO' is specified as the variable parameter. This is a 5-DOF vector.
 % 'sys' is the system object
 % 'sys.BField' is the most recent set of demodulated magnetic field strengths.
+if strcmpi(sys.modelType,'FAST') == 1
+   sys.BScaleActive = sys.BScaleActive * 25.1515; % Constant from optimisation process
+end
+
 objectiveCoil3D = @(currentPandO)objectiveCoilSquareCalc3D(currentPandO, sys, sys.BField);
     
     % Set the boundry conditions for the solver.

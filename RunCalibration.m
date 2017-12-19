@@ -4,11 +4,6 @@
 % This code is licensed under the BSD 3-Clause License.
 
 
-% SYSTEM = 'Anser1';
-% DAQ = 'mccdaq';
-% BOARDID = 'Board0';
-% SAMPLESIZE = 5000;
-
 SYSTEM = '7x7';
 DAQ = 'nidaq621Xoem';
 BOARDID = 'Dev1';
@@ -19,7 +14,7 @@ MODELTYPE = 'exact';
 % Each sensor must be calibrated seperatly due to gain variations
 % in the system amplifier electronics.
 % Sensor indices begin at '1'
-sensorToCal = input('Enter the sensor to Calibrate: ');
+sensorToCal = input('Enter the channel to Calibrate: ');
 
 % Select the desired sensor channel. This will also ensure the appropriate calibration
 % parameters are saved after calibration.
