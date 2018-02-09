@@ -24,20 +24,23 @@ objectiveCoil3D = @(currentPandO)objectiveCoilSquareCalc3D(currentPandO, sys, sy
     
     % Set the boundry conditions for the solver.
 
-    lowerbound = [-0.5, -0.5, 0, 0, 0];
-    upperbound = [0.5, 0.5, 0.5, pi, 2*pi];
+    lowerbound = [-0.5, -0.5, 0, -pi, -3*pi];
+    upperbound = [0.5, 0.5, 0.5, pi, 3*pi];
 
     % Initialises the least squares solver.
     [solution,resnorm_store]= lsqnonlin(objectiveCoil3D, sys.estimateInit(sys.SensorNo,:),lowerbound,upperbound,sys.lqOptions);
     % Check if the residual is small enough
-    if resnorm_store>sys.residualThresh; 
-        % Try again with a different initial condition, the angles are different here in the initial estimate (adding Pi to each angle)
-        [solution,resnorm_store]= lsqnonlin(objectiveCoil3D, sys.estimateInit(sys.SensorNo,:)+[0, 0, 0, pi, pi],lowerbound,upperbound,sys.lqOptions); 
-        % If it still fails, give up and use the initial estimate as the solution.
-        if resnorm_store>sys.residualThresh; 
-            solution = sys.estimateInit(sys.SensorNo,:);
-            fprintf('Lost Tracking for sensor %d', sys.SensorNo);
-        end
+    
+    if solution(5) > 2*pi
+        solution(5) = solution(5) - 2*pi;
+    elseif solution(5) < -2*pi
+            solution(5) = solution(5) + 2*pi;
     end
+    
+    if resnorm_store>sys.residualThresh; 
+        solution = sys.estimateInit(sys.SensorNo,:);
+        fprintf('Lost Tracking for sensor %d', sys.SensorNo);
+    end
+
     
 end
