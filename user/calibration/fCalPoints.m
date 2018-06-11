@@ -32,7 +32,7 @@ function [x,y,z] = fCalPoints(calibrationtype)
     boardDepth = 4e-3; % Millimeters
     z = ((boardDepth + probeHeight)) * ones(1,81);
  
- elseif (strcmpi(calibrationtype, '7x7') == true)
+ else
     % Spacing of test points on the Anser board
     spacing = (42.86) * 1e-3;
     probeHeight = 80e-3;

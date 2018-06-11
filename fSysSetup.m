@@ -151,7 +151,10 @@ G=repmat(f,2,1);
 % Initialise the DAQ unit and calculate the phase offsets between channels
 % due to the internal DAQ multiplexer
 fprintf('DAQ initialising\n');
-DAQ = fDAQSetup(Fs,sensorsToTrack, DAQType, DAQString, length(t));
+DAQ = 0;
+if ~strcmpi('SIM',systemType)
+    DAQ = fDAQSetup(Fs,sensorsToTrack, DAQType, DAQString, length(t));
+end
 DAQ_phase_offset = (2*pi*F/400000);% DAQ_phase_offset + -5e-5*F + 1.4591; % Adds filter phase effect
 fprintf('DAQ initialised\n');
 fprintf('DAQ Type %s\n', DAQType);
