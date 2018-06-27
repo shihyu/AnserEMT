@@ -1,0 +1,39 @@
+
+tic
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+[K,E] = ellipke(M);
+toc

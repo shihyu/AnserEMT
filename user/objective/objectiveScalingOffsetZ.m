@@ -34,16 +34,32 @@ y = sys.ytestpoint;
 % Adds the z-offset (if any) to account for errors in the axial positioning of the sensor in the calibration adapter. A zoffset typically occurs due to the uncertainty in positioning the sensor at precisly the correct height during calibration.
 z = sys.ztestpoint-zoffset; 
 
-
+% 
+radius = 6e-3;
+dx = radius/10;
+dy = dx;
+% numSquares = length(-radius:dx:radius)^2;
 % Calculate magnetic field at each testpoint with the mathematical current-filament model due a single emitter coil (coilIndex).
-for i = 1:numCalPoints
-    [Hx(i,:),Hy(i,:),Hz(i,:)]= spiralCoilFieldCalcMatrix(1,sys.xcoil(coilIndex,:),sys.ycoil(coilIndex,:),sys.zcoil(coilIndex,:),x(i),y(i),z(i));
+for n = 1:numCalPoints
+    totalHz = 0;
+    for i=-radius:dx:radius
+        for j = -radius:dy:radius
+            [Hxx,Hyy,Hzz]= spiralCoilFieldCalcMatrix(1,sys.xcoil(coilIndex,:),sys.ycoil(coilIndex,:),sys.zcoil(coilIndex,:),x(n)+i,y(n)+j,z(n));
+            totalHz = totalHz + Hzz;
+        end
+    end 
+    
+%   Hz(n,:) = totalHz * (dx*dy); % Multiplication by dA not needed, lump dA in with the Bscale value. dA is just a scaler
+    Hz(n,:) = totalHz;
+
 end
 
 
+% Save Hz to workspace for testing purposes
+% assignin('base','Hz',Hz);
+
 % Scale the result with the most recent estimate of the calibration scaling factor.
 Bz = sys.u0 * Hz * Bscale; 
-
 
 % Vectorise each component.
 BVectorised = Bz;
